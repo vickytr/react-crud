@@ -7,7 +7,7 @@ export default function Update () {
     let navigate = useNavigate();
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [checkbox, setCheckbox] = useState(false);
+    const [checkbox, setCheckbox] = useState('');
     const [id, setID] = useState(null);
     useEffect(() => {
         setID(localStorage.getItem('ID'))
@@ -24,6 +24,7 @@ export default function Update () {
             navigate('/read');
         })
     }
+    let checkboxValue = checkbox !== 'false' ? 'true' : '';
     return(
         <div>
             <Form className="create-form">
@@ -35,9 +36,8 @@ export default function Update () {
                     <label>Last Name</label>
                     <input placeholder='Last Name' value={lastName} onChange={(e) => setLastName(e.target.value)} />
                 </Form.Field>
-                {console.log(checkbox)}
                 <Form.Field>
-                    <Checkbox label='I agree to the Terms and Conditions' checked={checkbox} onChange={(e) => setCheckbox(!checkbox)}/>
+                    <Checkbox label='I agree to the Terms and Conditions' checked={checkboxValue} onChange={(e) => setCheckbox(!checkboxValue)}/>
                 </Form.Field>
                 <Button onClick={updateAPIData} type='submit'>Update</Button>
             </Form>

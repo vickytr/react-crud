@@ -1,4 +1,7 @@
+import React from 'react';
 import './App.css';
+import Navbar from './components/Navbar';
+
 import Create from './components/create';
 import Update from './components/update';
 import Read from './components/read';
@@ -10,11 +13,14 @@ function App() {
       <div className="main">
         <h2 className="main-header">React CURD Operations</h2>
         <div>
+          <Navbar />
           <Routes>
-          <Route exact path='/create' element={<Create/>} />
-          <Route exact path='/read' element={<Read/>} />
-          <Route path='/update' element={<Update/>} />
+            <Route path="/create" exact element={<Create />} />
+            <Route path="/read" exact element={<Read />} />
+            <Route path="/update" exact element={<Update />} />
+
           </Routes>
+          
         </div>
       </div>
     </Router>
